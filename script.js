@@ -16,8 +16,10 @@ function draw() {
   /* un-comment each line to see it work */
   //splash(); // call the splash screen function (below)
   //play(); // call the play screen function (below)
-  //gameOver(); // call the gameOver screen function (below)
-
+//gameOver(); // call the gameOver screen function (below)
+switch(gameState){
+case "splash" : 
+splash(); 
 }
 
 function splash() {
@@ -50,7 +52,17 @@ function gameOver() {
 }
 
 function mousePressed() {
+  
+  console.log("click")
+  if(gameState == "splash"){
+    gameState = "play"; 
+  } else if (gameState == "play"){
+    gameState == "gameOver";
+  }else if (gameState == "game over"){ 
+    gameState = "splash"
+  }
+  console.log(gameState); 
 
-  console.log("click!");
+
 
 }
