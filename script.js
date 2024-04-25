@@ -55,9 +55,28 @@ function play() {
   textAlign(CENTER);
   textSize(16);
   text("This is where the Game happens", width / 2, height / 2);
-  player1.x = mouseX; 
-  player1.y = mouseY; 
+  //player1.x = mouseX; 
+  //player1.y = mouseY; 
   player1.display(); 
+  player1.move(); 
+
+  if(keyIsPressed){
+    switch(keyCode){
+      case UP_ARROW :
+        player1.thrust();
+        break;
+      case DOWN_ARROW :
+        player1.break();
+        break;
+      case LEFT_ARROW : 
+        player1.angle -= .02; //turn left
+        break;
+      case RIGHT_ARROW: 
+        player1.angle += .02;
+        break; 
+
+    }
+  }
 
 }
 
@@ -82,26 +101,31 @@ function mousePressed() {
   console.log(gameState);
 
 }
-
-function keypressed() {
-  switch(keyCode){
-   case UP_ARROW :
-      player1.y -= 30; //subtract 30px from .y
+ /*
+function keyPressed() {
+  switch(keyCode) {
+    case UP_ARROW :
+      player1.y -= 30; // subtract 30px from.y
       player1.angle = 0; 
+      if(player1.y < 0) player1.y = height; 
       break;
-   case DOWN_ARROW :
-        player1.y += 30;
-        player1.angle = PI; 
-        break;
+    case DOWN_ARROW :
+      player1.y += 30;
+      player1.angle = PI;
+      if(player1.y > height) player1.y =0; 
+      break;
     case LEFT_ARROW :
-          player1.x -= 30;
-          player1.angle = PI + PI/2
-          break;
+      player1.x -= 30; 
+      player1.angle = PI + PI/2; 
+      if(player1.x <0) player1.x = width ; 
+      break;
     case RIGHT_ARROW :
-          player1.x += 30;
-          player1.angle = PI/2; 
-          break;
-     default :
-              console.log("use the arrow keys to move!");
+      player1.x += 30; 
+      player1.angle = PI/2; 
+      if(player1.x > width) player1.x = 0; 
+      break;
+    default : 
+      console.log("use the arrow keys to move!");
   }
 }
+*/ 
