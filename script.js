@@ -11,6 +11,7 @@ var timer;
 var testBox; 
 var dropTimer; 
 var presents = new Array(0); // empty array
+var score = 0; 
 
 function setup() {
 
@@ -68,8 +69,8 @@ function play() {
   textAlign(CENTER);
   textSize(16);
   text("This is where the Game happens", width / 2, height / 2);
-  //player1.x = mouseX; 
-  //player1.y = mouseY; 
+  player1.x = mouseX; 
+  player1.y = mouseY; 
   player1.display(); 
   player1.move(); 
 
@@ -88,17 +89,20 @@ function play() {
 
     if(presents[i].y > height){
       presents.splice(i,1);// remove from array
+      score --; 
     }
 
     let d = dist(presents[i].x, presents[i].y,player1.x, player1.y);
     if (d < 50){
       presents.splice(i,1);
+      score ++; 
     }
 
-  }// enf of for()loop
+  }// end of for()loop
 
   textAlign(LEFT);
-  if(dropTimer.isFinished()) {
+  text("Elapsed Time: " + timer.elapsedTime, 20, 20 ); //show elapsed time
+  text("Score:" + score, 20,40); 
     
   }
 
@@ -122,7 +126,7 @@ function play() {
     }
   }
 
-}
+
 
 function gameOver() {
   // this is what you see when the game ends
@@ -131,14 +135,16 @@ function gameOver() {
   textAlign(CENTER);
   textSize(16);
   text("Game Over!", width / 2, height / 2);
+  text("Your Final Score:" + score , width/2, height * 2/3); 
 }
 
 function mousePressed() { 
  
   if(gameState == "splash"){
     gameState = "play"; // go to the play() screen
+    timer.start();// start game timer
     dropTimer.start();
-    timer.start();
+    score = 0 ; // reset the score
   } else if (gameState == "play"){
     //gameState = "gameOver";
   } else if (gameState == "gameOver"){
