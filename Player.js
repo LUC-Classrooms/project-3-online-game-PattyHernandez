@@ -12,7 +12,7 @@ function Player(tempX, tempY) {
     translate(this.x, this.y); // move origin point
     rotate(this.angle); // player can rotate
 
-    fill(0); // black
+    fill(149, 69, 53); // brown
     /** calculate points on a triangle based on a unit circle. You could use this method to draw more complex polygons that would fit inside a circle centered on (this.x, this.y)
      * For any point around the circle, x = the cosine of the angle in radians from 0 to TWO_PI, and y = the sine of that angle. an angle of 0 is the right side of the circle, PI is the left side. 
      * The points generated this way are relative to the coordinate point (0,0). 
@@ -30,17 +30,19 @@ function Player(tempX, tempY) {
     let x3 = cos(PI * 5 / 6) * r;
     let y3 = sin(PI * 5 / 6) * r;
     //draw the triangle:
-    //triangle(x1, y1, x2, y2, x3, y3);
+    //triangle(x1, y1, x2, y2, x3, y3); 
     //or draw a complex polygon
     beginShape();
     vertex(x1, y1);
     vertex(x2, y2);
     vertex(x3, y3);
     endShape();
-    ellipse (x1, y1 , 5); 
+    ellipse (x1, y1 , 10); 
+    ellipse(x2,y2, 10); 
+    ellipse (x3,y3, 10); 
     // uncomment the next two lines to see the circle
     // noFill();
-    // ellipse(0, 0, this.diam, this.diam);
+    // ellipse(0,0, this.diam, this.diam);
 
     pop(); // dispose of this layer
 
@@ -58,22 +60,22 @@ function Player(tempX, tempY) {
 
     if(this.y > height|| this.y < 0 ){
       this.y = abs (this.y- height); 
-    }
-
+    } 
   }// the end of.move()
 
   this.thrust = function (){
     let horiz=  Math.sin(this.angle); 
     let vert = Math.cos(this.angle); 
 
-    this.xSpeed += .02 * horiz; 
-    this.ySpeed -= .02 * vert; 
+    this.xSpeed += .03 * horiz; 
+    this.ySpeed -= .03 * vert; 
   }
 
   this.brake = function () { 
     if(this.xSpeed > 0)
       this.xSpeed -= .01;  // slow down!
     else this.xSpeed += .01 //speed less than 0 so bring it back up
+    
     if(this.ySpeed > 0)
       this.ySpeed -= .01 ; 
     else this.ySpeed += .01 ; 

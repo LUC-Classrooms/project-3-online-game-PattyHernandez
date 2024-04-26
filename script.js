@@ -51,7 +51,7 @@ function draw() {
 
 function splash() {
   // this is what you would see when the game starts
-  background(200);
+  background(300,230,100);
   textAlign(CENTER);
   textSize(16);
   text("Let's Play a Game!", width / 2, height / 2);
@@ -64,11 +64,8 @@ function splash() {
 
 function play() {
   // this is what you see when the game is running 
-  background(0, 200, 0);
-  fill(0, 0, 200)
-  textAlign(CENTER);
-  textSize(16);
-  text("This is where the Game happens", width / 2, height / 2);
+  background(300, 230, 100);
+  fill(100, 50, 200)
   player1.x = mouseX; 
   player1.y = mouseY; 
   player1.display(); 
@@ -106,7 +103,7 @@ function play() {
     
   }
 
-  text(timer.elapsedTime, 20,20)
+  text(timer.elapsedTime,20,20)
 
   if(keyIsPressed){
     switch(keyCode){
@@ -134,7 +131,7 @@ function gameOver() {
   fill(255, 0, 0)
   textAlign(CENTER);
   textSize(16);
-  text("Game Over!", width / 2, height / 2);
+  text("Thanks For Playing! !Try Again!", width / 2, height / 2);
   text("Your Final Score:" + score , width/2, height * 2/3); 
 }
 
@@ -180,4 +177,5 @@ function keyPressed() {
       console.log("use the arrow keys to move!");
   }
 }
+
 
